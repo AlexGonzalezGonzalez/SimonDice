@@ -12,7 +12,7 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
-
+    var continuar: Boolean = true
     var posicion:Int=0
     lateinit var secuencia : java.util.ArrayList<Int>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,9 +77,11 @@ class MainActivity : AppCompatActivity() {
     }
     fun comparacion(secuencia: ArrayList<Int>, x:Int, posicion:Int): Boolean{
         if(secuencia[posicion]==x){
-            return true
+            continuar=true
+            return continuar
         }else{
-            return false
+            continuar=false
+            return continuar
         }
     }
 
@@ -134,10 +136,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun juego(secuencia: ArrayList<Int>, botones: ArrayList<Button>) {
-        var continuar: Boolean = true
+        //posicion del array para la comparacion
         posicion=0
-        //Ronda vale 0
-        var ronda: Int = 0
         var random: Int = 0
         GlobalScope.launch {
             runOnUiThread {
